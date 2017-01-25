@@ -8,7 +8,7 @@ export class CloudipspWebView extends Component {
     this.state={};
     this.urlStartPattern = 'http://secure-redirect.cloudipsp.com/submit/#';
   }
-  
+
   __confirm__ = (baseUrl, html) => {
     if (this.onSuccess !== undefined) {
       throw new Error('CloudipspWebView already waiting for confirmation');
@@ -20,19 +20,19 @@ export class CloudipspWebView extends Component {
       this.onSuccess = onOk;
     });
   }
-  
+
   render() {
     if (this.state.baseUrl === undefined) {
       return (<View />);
     } else {
       return  (
         <WebView
-          style={{flex:1}} 
+          style={{flex:1}}
           ref='webView'
           javaScriptEnabled={true}
           domStorageEnabled={true}
           scalesPageToFit={true}
-          source={{ baseUrl : this.state.baseUrl, html : this.state.html}}
+          source={{ html : this.state.html}}
           onLoadStart={(event) => {
             if (this.onSuccess !== undefined) {
               let url = event.nativeEvent.url;
