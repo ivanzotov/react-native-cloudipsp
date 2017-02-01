@@ -32,7 +32,7 @@ export class CloudipspWebView extends Component {
           javaScriptEnabled={true}
           domStorageEnabled={true}
           scalesPageToFit={true}
-          source={{ html : this.state.html}}
+          source={{ baseUrl : this.state.baseUrl, html : this.state.html}}
           onLoadStart={(event) => {
             if (this.onSuccess !== undefined) {
               let url = event.nativeEvent.url;
